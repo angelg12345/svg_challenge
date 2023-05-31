@@ -33,3 +33,23 @@ const questions = [
         name: "text_color"
     },
 ];
+//svg file is being created
+function writeToFile(filename, data) {
+    var content = generateLogo(data);
+    fs.writeFile(filename, content, function(error){
+        if (error) {
+            return console.log(error);
+        }
+
+        console.log('generated logo.svg')
+    })
+}
+
+function init() {
+    inquirer.prompt(questions).then(function(data){
+        var file = 'logo.svg';
+        writeToFile(file, data);
+    });
+}
+
+init();

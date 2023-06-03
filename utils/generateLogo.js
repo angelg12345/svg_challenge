@@ -1,6 +1,6 @@
 
 const Circle = require("../lib/Circle")
-
+const Triangle = require("../lib/Triangle")
 function generateLogo(data){
     let shape = undefined
     if (data.shape === 'Triangle') {

@@ -18,7 +18,7 @@ const questions = [
     {
         type: "input",
         message: "What color would you like the shape to be (Or a hexadecimal number)?",
-        name: "shape_color"
+        name: "shapeColor"
     },
 
     {
@@ -30,7 +30,7 @@ const questions = [
     {
         type: "input",
         message: "what color would you like the text to be?",
-        name: "text_color"
+        name: "textColor"
     },
 ];
 //svg file is being created

@@ -23,32 +23,42 @@ const questions = [
 
     {
         type: "input",
-        message: "Please type in a character set of 3 letters.",
+        message: "Please type in a set of 3 letters.",
         name: "text",
     },
 
     {
         type: "input",
-        message: "what color would you like the text to be?",
+        message: "what color would you like the text?",
         name: "textColor"
     },
 ];
-//svg file is being created
-function writeToFile(filename, data) {
-    var content = generateLogo(data);
-    fs.writeFile(filename, content, function(error){
+
+// function to prompt user
+function promptuser () {
+    return inquirer.prompt(questions);
+}
+// function to write the file using data from user
+function writeToFile(data) {
+    const content = generateLogo(data);
+    fs.writeFile('logo.svg', content, function(error){
         if (error) {
             return console.log(error);
         }
 
         console.log('generated logo.svg')
-    })
+    });
 }
 
 function init() {
-    inquirer.prompt(questions).then(function(data){
-        var file = 'logo.svg';
-        writeToFile(file, data);
+    promptuser()
+   .then(function(data){
+        const file = 'logo.svg';
+        writeToFile(data);
+    })
+    // catch errors
+    .catch(function(error) {
+        console.error('error prompting user:', error)
     });
 }
 
